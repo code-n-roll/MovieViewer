@@ -16,4 +16,5 @@ TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
 
 ## How to setup
 1. Create local.properties in project root
-2. Add `API_KEY = <your_api_key>` to `local.properties`  
+2. Create API_KEY https://www.themoviedb.org/settings/api
+3. Add `API_KEY = <your_api_key>` to `local.properties`  
