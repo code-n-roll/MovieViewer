@@ -10,10 +10,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.karanchuk.movieviewer.core.tea.compose.TeaComposable
-import com.karanchuk.movieviewer.movies.MoviesScreen
-import com.karanchuk.movieviewer.movies.MoviesViewModel
-import com.karanchuk.movieviewer.movies.tea.core.MoviesEffect
-import com.karanchuk.movieviewer.movies.tea.core.MoviesUiEvent
+import com.karanchuk.movieviewer.feature.movies.MoviesScreen
+import com.karanchuk.movieviewer.feature.movies.tea.MoviesViewModel
+import com.karanchuk.movieviewer.feature.movies.tea.core.MoviesEffect
+import com.karanchuk.movieviewer.feature.movies.tea.core.MoviesUiEvent
 
 @Composable
 fun NavGraph(

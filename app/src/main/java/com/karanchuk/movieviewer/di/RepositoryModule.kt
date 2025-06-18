@@ -1,7 +1,7 @@
 package com.karanchuk.movieviewer.di
 
-import com.karanchuk.movieviewer.data.source.MoviesRepository
-import com.karanchuk.movieviewer.data.source.MoviesRepositoryImpl
+import com.karanchuk.movieviewer.repository.movies.domain.MoviesRepository
+import com.karanchuk.movieviewer.repository.movies.MoviesRepositoryImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.karanchuk.movieviewer.BuildConfig
 import com.karanchuk.movieviewer.data.source.local.MovieViewerDatabase
-import com.karanchuk.movieviewer.data.source.local.dao.MoviesDao
+import com.karanchuk.movieviewer.repository.movies.db.dao.MoviesDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

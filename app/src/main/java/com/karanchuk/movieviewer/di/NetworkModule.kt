@@ -2,7 +2,7 @@ package com.karanchuk.movieviewer.di
 
 import com.karanchuk.movieviewer.data.source.network.ApiConstants
 import com.karanchuk.movieviewer.data.source.network.ApiKeyInterceptor
-import com.karanchuk.movieviewer.data.source.network.MovieApi
+import com.karanchuk.movieviewer.repository.movies.api.MovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
