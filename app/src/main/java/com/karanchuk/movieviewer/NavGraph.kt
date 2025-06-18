@@ -43,7 +43,8 @@ fun NavGraph(
                 }
 
                 MoviesScreen(
-                    state = uiState.moviesScreenState,
+                    title = "[TODO] Movies",
+                    state = uiState,
                     onItemClick = { movieId -> accept(MoviesUiEvent.OpenMovieDetails(movieId)) },
                     onFavoriteClick = { movieId -> accept(MoviesUiEvent.FavoriteClick(movieId)) },
                 )

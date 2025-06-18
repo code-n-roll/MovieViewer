@@ -1,9 +1,11 @@
 package com.karanchuk.movieviewer.movies.ui
 
 import com.karanchuk.movieviewer.core.tea.component.UiStateMapper
-import com.karanchuk.movieviewer.movies.MovieCardState
-import com.karanchuk.movieviewer.movies.MoviesScreenState
+import com.karanchuk.movieviewer.data.source.Movie
 import com.karanchuk.movieviewer.movies.tea.core.MoviesState
+import com.karanchuk.movieviewer.movies.ui.components.MovieCardState
+import com.karanchuk.movieviewer.util.Lce
+import com.karanchuk.movieviewer.util.requireContent
 import java.time.format.DateTimeFormatter
 
 data class MoviesWording(
@@ -26,23 +28,32 @@ class MoviesUiStateMapper : UiStateMapper<MoviesState, MoviesUiState> {
 
     override fun map(state: MoviesState): MoviesUiState {
         val wording = MoviesWording.Preview
-        return MoviesUiState(
-            moviesScreenState = MoviesScreenState(
-                title = wording.screenTitle,
-                movies = state.movies.map { movie ->
-                    MovieCardState(
-                        id = movie.id,
-                        title = movie.title,
-                        posterUrl = movie.posterUrl,
-                        date = "${wording.releaseDate} ${movie.releaseDate.format(formatter)}",
-                        vote = "${wording.rating} ${movie.voteAverage.toInt()}/10",
-                    )
-                }
-            )
+        return when (state.movies) {
+            is Lce.Content -> {
+                MoviesUiState.Content(
+                    movies = state.movies.requireContent().map { movie ->
+                        movie.toMovieCardState(wording)
+                    }
+                )
+            }
+
+            is Lce.Error -> MoviesUiState.Error
+            is Lce.Loading -> MoviesUiState.Loading
+        }
+    }
+
+    private fun Movie.toMovieCardState(wording: MoviesWording): MovieCardState {
+        return MovieCardState(
+            id = id,
+            title = title,
+            posterUrl = posterUrl,
+            date = "${wording.releaseDate} ${releaseDate.format(formatter)}",
+            vote = "${wording.rating} ${voteAverage.toInt()}/$MAX_RATING",
         )
     }
 
     companion object {
+        private const val MAX_RATING = 10
         private const val DATE_FORMAT_UI = "MMM dd, yyyy"
     }
 }

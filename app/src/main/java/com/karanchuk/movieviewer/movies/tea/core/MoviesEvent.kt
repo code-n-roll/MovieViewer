@@ -3,7 +3,12 @@ package com.karanchuk.movieviewer.movies.tea.core
 import com.karanchuk.movieviewer.data.source.Movie
 
 sealed interface MoviesEvent {
-    data class MoviesLoaded(val movies: List<Movie>) : MoviesEvent
+
+    sealed interface MoviesLoading : MoviesEvent {
+        data object Started : MoviesLoading
+        class Succeed(val movies: List<Movie>) : MoviesLoading
+        class Failed(val error: Throwable) : MoviesLoading
+    }
 }
 
 sealed interface MoviesUiEvent : MoviesEvent {
