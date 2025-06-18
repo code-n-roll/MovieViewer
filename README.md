@@ -13,3 +13,7 @@ TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
 
 ## Screenshots
 <img src=https://github.com/user-attachments/assets/4be6975a-9d05-461b-ab19-66cadd2202ff width=300/>
+
+## How to setup
+1. Create local.properties in project root
+2. Add `API_KEY = <your_api_key>` to `local.properties`  
