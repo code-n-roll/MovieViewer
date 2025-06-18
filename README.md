@@ -1,3 +1,6 @@
+## API
+TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
+
 ## Tech Stack
 - ELM
 - Compose UI
