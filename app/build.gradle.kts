@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -18,6 +20,8 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "API_KEY", "\"${getApiKey("API_KEY")}\"")
     }
 
     buildTypes {
@@ -38,8 +42,16 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
+
+// extension on Project to read a property from local.properties
+fun Project.getApiKey(key: String): String =
+    Properties().run {
+        load(rootProject.file("local.properties").inputStream())
+        getProperty(key)
+    }
 
 dependencies {
 
