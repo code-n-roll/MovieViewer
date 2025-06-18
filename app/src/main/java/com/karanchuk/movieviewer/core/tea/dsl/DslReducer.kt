@@ -19,14 +19,14 @@ abstract class DslReducer<Command : Any, Effect : Any, Event : Any, State : Any>
 
     protected abstract fun reduce(event: Event): Any?
 
-    @TeaDsl
+    @TeaDsl2
     fun state(block: State.() -> State) {
         updater.state(block)
     }
 
-    @TeaDsl
+    @TeaDsl2
     fun commands(vararg commands: Command) = updater.commands(*commands)
 
-    @TeaDsl
+    @TeaDsl2
     fun effects(vararg effects: Effect) = updater.effects(*effects)
 }
