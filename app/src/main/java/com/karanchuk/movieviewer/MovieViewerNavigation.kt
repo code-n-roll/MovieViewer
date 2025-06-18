@@ -15,7 +15,7 @@ object MovieViewerDestinationsArgs {
 
 object MovieViewerDestinations {
     const val MOVIES_ROUTE = MovieViewerScreens.MOVIES_SCREEN
-    const val MOVIE_DETAILS_ROUTE = "$MOVIE_DETAILS_SCREEN/$MOVIE_ID_ARG"
+    const val MOVIE_DETAILS_ROUTE = "$MOVIE_DETAILS_SCREEN/{$MOVIE_ID_ARG}"
 }
 
 class MovieViewerNavigationActions(private val navController: NavController) {
