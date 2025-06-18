@@ -1,6 +1,9 @@
 package com.karanchuk.movieviewer.data.source
 
+import com.karanchuk.movieviewer.common.ImagePrefetcher
 import com.karanchuk.movieviewer.data.source.local.dao.MoviesDao
+import com.karanchuk.movieviewer.data.source.local.model.DbMovieFeedCrossRef
+import com.karanchuk.movieviewer.data.source.local.model.FeedType
 import com.karanchuk.movieviewer.data.source.network.MovieApi
 import com.karanchuk.movieviewer.di.DefaultDispatcher
 import com.karanchuk.movieviewer.di.IoDispatcher
@@ -13,9 +16,9 @@ import javax.inject.Singleton
 
 interface MoviesRepository {
 
-    fun getMoviesFlow(): Flow<List<Movie>>
+    fun getMoviesFlow(feedType: FeedType): Flow<List<Movie>>
 
-    suspend fun loadMovies()
+    suspend fun loadMovies(feedType: FeedType)
 }
 
 @Singleton
@@ -24,18 +27,41 @@ class MoviesRepositoryImpl @Inject constructor(
     private val localDataSource: MoviesDao,
     @DefaultDispatcher private val defaultDispatcher: CoroutineDispatcher,
     @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+    private val imagePrefetcher: ImagePrefetcher,
 ) : MoviesRepository {
 
-    override suspend fun loadMovies() {
+    override suspend fun loadMovies(feedType: FeedType) {
         withContext(ioDispatcher) {
-            runCatching { networkDataSource.getPopularMovies().results }
+            runCatching {
+                when (feedType) {
+                    FeedType.POPULAR -> networkDataSource.getPopularMovies()
+                    FeedType.TOP_RATED -> networkDataSource.getTopRatedMovies()
+                    FeedType.UPCOMING -> networkDataSource.getUpcomingMovies()
+                    FeedType.NOW_PLAYING -> networkDataSource.getNowPlayingMovies()
+                }.results
+            }
                 .mapCatching { apiMovies -> apiMovies.apiToDbMovieList() }
-                .onSuccess { localDataSource.insertAll(it) }
+                .onSuccess { dbMovies ->
+                    localDataSource.insertAll(dbMovies)
+
+                    val crossRefs = dbMovies.mapIndexed { index, dbMovie ->
+                        DbMovieFeedCrossRef(
+                            feedType = feedType,
+                            movieId = dbMovie.id,
+                            position = index
+                        )
+                    }
+                    localDataSource.insertFeedCrossRefs(crossRefs)
+
+                    dbMovies.forEach { dbMovie ->
+                        imagePrefetcher.prefetchImage(url = dbMovie.posterUrl)
+                    }
+                }
         }
     }
 
-    override fun getMoviesFlow(): Flow<List<Movie>> {
-        return localDataSource.observeAll().map { dbMovies ->
+    override fun getMoviesFlow(feedType: FeedType): Flow<List<Movie>> {
+        return localDataSource.observeAll(feedType = feedType).map { dbMovies ->
             withContext(defaultDispatcher) {
                 dbMovies.toMovieList()
             }

@@ -47,6 +47,8 @@ room-testing = { group = "androidx.room", name = "room-testing", version.ref = "
 
 timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "timber" }
 
+composeShimmer = "com.valentinilk.shimmer:compose-shimmer:1.0.5"
+
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

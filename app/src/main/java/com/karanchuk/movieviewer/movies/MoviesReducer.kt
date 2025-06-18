@@ -3,7 +3,6 @@ package com.karanchuk.movieviewer.movies
 import com.karanchuk.movieviewer.core.tea.dsl.DslReducer
 import com.karanchuk.movieviewer.movies.tea.core.MoviesCommand
 import com.karanchuk.movieviewer.movies.tea.core.MoviesCommand.LoadMovies
-import com.karanchuk.movieviewer.movies.tea.core.MoviesCommand.ObserveMovies
 import com.karanchuk.movieviewer.movies.tea.core.MoviesEffect
 import com.karanchuk.movieviewer.movies.tea.core.MoviesEvent
 import com.karanchuk.movieviewer.movies.tea.core.MoviesEvent.MoviesLoading
@@ -21,13 +20,13 @@ class MoviesReducer : DslReducer<MoviesCommand, MoviesEffect, MoviesEvent, Movie
     }
 
     private fun reduceMoviesLoading(event: MoviesLoading) = when (event) {
-        is MoviesLoading.Started -> state { copy(movies = movies.toLoadingContentAware()) }
-        is MoviesLoading.Succeed -> state { copy(movies = Lce.Content(event.movies)) }
-        is MoviesLoading.Failed -> state { copy(movies = Lce.Error(event.error)) }
+        is MoviesLoading.Started -> state { copy(feeds = feeds.toLoadingContentAware()) }
+        is MoviesLoading.Succeed -> state { copy(feeds = Lce.Content(event.result)) }
+        is MoviesLoading.Failed -> state { copy(feeds = Lce.Error(event.error)) }
     }
 
     private fun reduceUiEvent(uiEvent: MoviesUiEvent) = when (uiEvent) {
-        is MoviesUiEvent.Init -> { commands(ObserveMovies, LoadMovies) }
+        is MoviesUiEvent.Init -> { commands(LoadMovies) }
         is MoviesUiEvent.OpenMovieDetails -> { effects(MoviesEffect.OpenMovieDetails(movieId = uiEvent.movieId)) }
         is MoviesUiEvent.FavoriteClick -> { effects(MoviesEffect.ShowToast) }
     }

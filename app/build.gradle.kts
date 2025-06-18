@@ -86,6 +86,9 @@ dependencies {
     // Timber
     implementation(libs.timber)
 
+    // Shimmer
+    implementation(libs.composeShimmer)
+
     testImplementation(libs.junit)
 
     androidTestImplementation(libs.androidx.junit)

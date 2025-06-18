@@ -3,7 +3,7 @@ package com.karanchuk.movieviewer.data.source.local.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
-import com.karanchuk.movieviewer.data.source.local.MoviesConverter
+import com.karanchuk.movieviewer.data.source.local.converters.MoviesConverter
 import java.time.LocalDate
 
 @Entity(

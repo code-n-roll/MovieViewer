@@ -3,7 +3,6 @@ package com.karanchuk.movieviewer.movies
 import com.karanchuk.movieviewer.core.tea.TeaViewModel
 import com.karanchuk.movieviewer.data.source.MoviesRepository
 import com.karanchuk.movieviewer.movies.tea.actor.LoadMoviesActor
-import com.karanchuk.movieviewer.movies.tea.actor.ObserveMoviesActor
 import com.karanchuk.movieviewer.movies.tea.core.MoviesCommand
 import com.karanchuk.movieviewer.movies.tea.core.MoviesEffect
 import com.karanchuk.movieviewer.movies.tea.core.MoviesEvent
@@ -20,7 +19,6 @@ class MoviesViewModel @Inject constructor(
 ) : TeaViewModel<MoviesCommand, MoviesEffect, MoviesEvent, MoviesUiEvent, MoviesState, MoviesUiState>(
     initialState = MoviesState(),
     actors = setOf(
-        ObserveMoviesActor(moviesRepository),
         LoadMoviesActor(moviesRepository),
     ),
     reducer = MoviesReducer(),

@@ -26,6 +26,7 @@ object DatabaseModule {
         ).apply {
             if (BuildConfig.DEBUG) {
                 fallbackToDestructiveMigration()
+                fallbackToDestructiveMigrationOnDowngrade()
             }
         }.build()
     }

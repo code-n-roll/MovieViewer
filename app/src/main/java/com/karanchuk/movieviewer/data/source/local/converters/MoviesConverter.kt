@@ -1,4 +1,4 @@
-package com.karanchuk.movieviewer.data.source.local
+package com.karanchuk.movieviewer.data.source.local.converters
 
 import androidx.room.TypeConverter
 import com.karanchuk.movieviewer.util.fromServerDateFormatString

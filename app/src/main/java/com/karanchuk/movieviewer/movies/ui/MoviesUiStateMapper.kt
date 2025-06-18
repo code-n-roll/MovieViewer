@@ -2,37 +2,24 @@ package com.karanchuk.movieviewer.movies.ui
 
 import com.karanchuk.movieviewer.core.tea.component.UiStateMapper
 import com.karanchuk.movieviewer.data.source.Movie
+import com.karanchuk.movieviewer.data.source.local.model.FeedType
+import com.karanchuk.movieviewer.movies.ui.components.section.MovieSectionState
 import com.karanchuk.movieviewer.movies.tea.core.MoviesState
-import com.karanchuk.movieviewer.movies.ui.components.MovieCardState
+import com.karanchuk.movieviewer.movies.ui.components.card.MovieCardState
 import com.karanchuk.movieviewer.util.Lce
 import com.karanchuk.movieviewer.util.requireContent
-import java.time.format.DateTimeFormatter
-
-data class MoviesWording(
-    val screenTitle: String,
-    val rating: String,
-    val releaseDate: String,
-) {
-    companion object {
-        val Preview = MoviesWording(
-            screenTitle = "Movies",
-            rating = "Rating: ",
-            releaseDate = "Release date: ",
-        )
-    }
-}
 
 class MoviesUiStateMapper : UiStateMapper<MoviesState, MoviesUiState> {
 
-    private val formatter = DateTimeFormatter.ofPattern(DATE_FORMAT_UI)
-
     override fun map(state: MoviesState): MoviesUiState {
-        val wording = MoviesWording.Preview
-        return when (state.movies) {
+        return when (state.feeds) {
             is Lce.Content -> {
                 MoviesUiState.Content(
-                    movies = state.movies.requireContent().map { movie ->
-                        movie.toMovieCardState(wording)
+                    feeds = state.feeds.requireContent().mapValues { (feedType, movies) ->
+                        MovieSectionState(
+                            title = feedType.toTitle(),
+                            movies = movies.map { it.toMovieCardState() }
+                        )
                     }
                 )
             }
@@ -42,18 +29,20 @@ class MoviesUiStateMapper : UiStateMapper<MoviesState, MoviesUiState> {
         }
     }
 
-    private fun Movie.toMovieCardState(wording: MoviesWording): MovieCardState {
+    private fun FeedType.toTitle(): String {
+        return when (this) {
+            FeedType.POPULAR -> "Popular"
+            FeedType.NOW_PLAYING -> "Now playing"
+            FeedType.TOP_RATED -> "Top rated"
+            FeedType.UPCOMING -> "Upcoming"
+        }
+    }
+
+    private fun Movie.toMovieCardState(): MovieCardState {
         return MovieCardState(
             id = id,
             title = title,
             posterUrl = posterUrl,
-            date = "${wording.releaseDate} ${releaseDate.format(formatter)}",
-            vote = "${wording.rating} ${voteAverage.toInt()}/$MAX_RATING",
         )
-    }
-
-    companion object {
-        private const val MAX_RATING = 10
-        private const val DATE_FORMAT_UI = "MMM dd, yyyy"
     }
 }
