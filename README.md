@@ -2,6 +2,7 @@
 TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
 
 ## Tech Stack
+- Kotlin
 - ELM
 - Compose UI
 - Room
