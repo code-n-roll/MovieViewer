@@ -5,7 +5,6 @@ package com.karanchuk.movieviewer.feature.movies
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -17,8 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.karanchuk.movieviewer.feature.movies.ui.components.MovieScreenShimmer
 import com.karanchuk.movieviewer.feature.movies.ui.MoviesUiState
+import com.karanchuk.movieviewer.feature.movies.ui.components.MovieScreenShimmer
 import com.karanchuk.movieviewer.feature.movies.ui.components.section.MovieSection
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -30,7 +29,8 @@ fun MoviesScreen(
     onFavoriteClick: (Int) -> Unit,
 ) {
     Scaffold(
-        modifier = Modifier.statusBarsPadding(),
+        modifier = Modifier,
+        contentWindowInsets = WindowInsets(0.dp),
         topBar = {
             TopAppBar(
                 title = { Text(text = title) },

@@ -25,7 +25,7 @@ class LoadMoviesActor(
     private fun handleCommand(command: MoviesCommand.LoadMovies): Flow<MoviesEvent> = flow {
         emit(MoviesEvent.MoviesLoading.Started)
 
-        val result = runCatching {
+        runCatching {
             coroutineScope {
                 FeedType.entries.associateWith { feedType ->
                     async {
@@ -35,8 +35,6 @@ class LoadMoviesActor(
                 }.mapValues { (_, deferred) -> deferred.await() }
             }
         }
-
-        result
             .onSuccess { emit(MoviesEvent.MoviesLoading.Succeed(it)) }
             .onFailure { emit(MoviesEvent.MoviesLoading.Failed(it)) }
     }
