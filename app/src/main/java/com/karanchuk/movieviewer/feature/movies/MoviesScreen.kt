@@ -2,6 +2,7 @@
 
 package com.karanchuk.movieviewer.feature.movies
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
@@ -14,8 +15,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.karanchuk.movieviewer.R
 import com.karanchuk.movieviewer.feature.movies.ui.MoviesUiState
 import com.karanchuk.movieviewer.feature.movies.ui.components.MovieScreenShimmer
 import com.karanchuk.movieviewer.feature.movies.ui.components.section.MovieSection
@@ -23,7 +26,7 @@ import com.karanchuk.movieviewer.feature.movies.ui.components.section.MovieSecti
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MoviesScreen(
-    title: String,
+    @StringRes titleResId: Int,
     state: MoviesUiState,
     onItemClick: (Int) -> Unit,
     onFavoriteClick: (Int) -> Unit,
@@ -33,7 +36,7 @@ fun MoviesScreen(
         contentWindowInsets = WindowInsets(0.dp),
         topBar = {
             TopAppBar(
-                title = { Text(text = title) },
+                title = { Text(text = stringResource(titleResId)) },
                 colors = TopAppBarDefaults.topAppBarColors(),
                 windowInsets = WindowInsets(0.dp)
             )
@@ -85,7 +88,7 @@ private fun Content(
 @Composable
 fun MoviesScreenSuccessPreview() {
     MoviesScreen(
-        title = "Movies",
+        titleResId = R.string.screen_movies,
         state = MoviesUiState.Content.Preview,
         onItemClick = {},
         onFavoriteClick = {},
@@ -96,7 +99,7 @@ fun MoviesScreenSuccessPreview() {
 @Composable
 fun MoviesScreenLoadingPreview() {
     MoviesScreen(
-        title = "Movies",
+        titleResId = R.string.screen_movies,
         state = MoviesUiState.Loading,
         onItemClick = {},
         onFavoriteClick = {},
@@ -107,7 +110,7 @@ fun MoviesScreenLoadingPreview() {
 @Composable
 fun MoviesScreenErrorPreview() {
     MoviesScreen(
-        title = "Movies",
+        titleResId = R.string.screen_movies,
         state = MoviesUiState.Error,
         onItemClick = {},
         onFavoriteClick = {},

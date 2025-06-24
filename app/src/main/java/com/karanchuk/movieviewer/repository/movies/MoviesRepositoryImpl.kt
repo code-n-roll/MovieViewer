@@ -17,7 +17,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class MoviesRepositoryImpl @Inject constructor(
+internal class MoviesRepositoryImpl @Inject constructor(
     private val networkDataSource: MovieApi,
     private val localDataSource: MoviesDao,
     @DefaultDispatcher private val defaultDispatcher: CoroutineDispatcher,

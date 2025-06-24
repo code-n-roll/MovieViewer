@@ -26,9 +26,10 @@ import coil.request.ImageRequest
 fun MovieCard(
     state: MovieCardState,
     onItemClick: (Int) -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     Column(
-        modifier = Modifier,
+        modifier = modifier,
         horizontalAlignment = Alignment.Start,
     ) {
         AsyncImage(

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.karanchuk.movieviewer.BuildConfig
 import com.karanchuk.movieviewer.data.source.local.MovieViewerDatabase
+import com.karanchuk.movieviewer.repository.favorite_movies.db.dao.FavoriteMovieDao
 import com.karanchuk.movieviewer.repository.movies.db.dao.MoviesDao
 import dagger.Module
 import dagger.Provides
@@ -33,4 +34,7 @@ object DatabaseModule {
 
     @Provides
     fun providesMoviesDao(database: MovieViewerDatabase): MoviesDao = database.moviesDao()
+
+    @Provides
+    fun providesFavoriteMoviesDao(database: MovieViewerDatabase): FavoriteMovieDao = database.favoriteMovieDao()
 }

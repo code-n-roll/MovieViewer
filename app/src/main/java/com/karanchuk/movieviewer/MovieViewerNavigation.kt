@@ -1,7 +1,7 @@
 package com.karanchuk.movieviewer
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.FavoriteBorder
+import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -16,7 +16,7 @@ enum class BottomBarDestination(
     val contentDescription: String
 ) {
     MOVIES(MovieViewerDestinations.MOVIES_ROUTE, "Movies", Icons.Default.Home, "Movies"),
-    FAVORITES(MovieViewerDestinations.FAVORITES_ROUTE, "Favorites", Icons.Default.FavoriteBorder, "Favorite"),
+    FAVORITES(MovieViewerDestinations.FAVORITES_ROUTE, "Favorites", Icons.Default.Favorite, "Favorite"),
     SETTINGS(MovieViewerDestinations.SETTINGS_ROUTE, "Settings", Icons.Default.Settings, "Settings")
 }
 

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MovieViewer</string>
+    <string name="sort_by_title_asc">By Title A-Z</string>
+    <string name="sort_by_title_desc">By Title Z-A</string>
+    <string name="sort_by_release_date_asc">Release date oldest</string>
+    <string name="sort_by_release_date_desc">Release date newest</string>
+    <string name="sort_by_date_added_asc">Date added oldest</string>
+    <string name="sort_by_date_added_desc">Date added newest</string>
+    <string name="screen_movies">Movies</string>
+    <string name="screen_favorites">Favorites</string>
+    <string name="screen_settings">Settings</string>
 </resources>
