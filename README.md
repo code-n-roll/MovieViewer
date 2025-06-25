@@ -8,6 +8,7 @@ TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
 - Compose UI
 - Room
 - Retrofit + OkHttp
+- Paging
 - Hilt
 - Jetpack Compose Navigation
 - Coil
