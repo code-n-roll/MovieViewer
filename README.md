@@ -14,7 +14,8 @@ TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
 - Gson
 
 ## Screenshots
-<img src=https://github.com/user-attachments/assets/4be6975a-9d05-461b-ab19-66cadd2202ff width=300/>
+<img src=https://github.com/user-attachments/assets/22e68643-7e0d-4199-998b-f2967d7540b3 width=350/>
+
 
 ## How to setup
 1. Create local.properties in project root
