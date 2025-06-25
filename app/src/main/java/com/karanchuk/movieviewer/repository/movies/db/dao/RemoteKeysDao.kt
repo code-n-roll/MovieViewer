@@ -11,7 +11,7 @@ import com.karanchuk.movieviewer.repository.movies.db.model.FeedType
 interface RemoteKeysDao {
 
     @Query("SELECT * FROM MovieRemoteKeys WHERE movieId = :movieId AND feedType = :feedType")
-    suspend fun remoteKeysByMovieId(movieId: Int, feedType: FeedType): DbMovieRemoteKey?
+    suspend fun remoteKeysByMovieIdAndFeedType(movieId: Int, feedType: FeedType): DbMovieRemoteKey?
 
     @Query("DELETE FROM MovieRemoteKeys WHERE feedType = :feedType")
     suspend fun clearRemoteKeysByFeedType(feedType: FeedType)
