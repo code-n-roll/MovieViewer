@@ -4,7 +4,7 @@ TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
 ## Tech Stack
 - Kotlin
 - Coroutines/Flow
-- ELM
+- MVVM
 - Compose UI
 - Room
 - Retrofit + OkHttp
