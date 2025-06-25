@@ -26,6 +26,7 @@ android {
 
     buildTypes {
         release {
+            signingConfig = signingConfigs.getByName("debug") // dev only, for quick release signing
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -80,6 +81,7 @@ dependencies {
     // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
+    implementation(libs.room.paging)
     ksp(libs.room.compiler)
 
     // Retrofit
@@ -92,6 +94,10 @@ dependencies {
 
     // Shimmer
     implementation(libs.composeShimmer)
+
+    // Paging
+    implementation(libs.androidx.paging.runtime)
+    implementation(libs.androidx.paging.compose)
 
     testImplementation(libs.junit)
 

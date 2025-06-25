@@ -18,7 +18,7 @@ fun List<DbMovie>.toMovieList() = map { it.toMovie() }
 fun ApiMovie.toDbMovie() = DbMovie(
     id = id,
     title = title,
-    posterUrl = posterUrl,
+    posterUrl = posterUrl.orEmpty(),
     voteAverage = voteAverage,
     releaseDate = releaseDate.fromServerDateFormatString(),
 )

@@ -12,5 +12,9 @@ fun LocalDate.toServerDateFormatString(): String {
 
 fun String.fromServerDateFormatString(): LocalDate {
     val formatter = DateTimeFormatter.ofPattern(SERVER_DATE_FORMAT)
-    return LocalDate.parse(this, formatter)
+    return try {
+        LocalDate.parse(this, formatter)
+    } catch (e: Exception) {
+        LocalDate.MIN
+    }
 }

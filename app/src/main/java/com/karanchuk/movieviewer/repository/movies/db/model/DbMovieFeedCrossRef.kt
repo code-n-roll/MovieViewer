@@ -11,10 +11,14 @@ import androidx.room.Index
         ForeignKey(
             entity = DbMovie::class,
             parentColumns = ["id"],
-            childColumns = ["movieId"]
+            childColumns = ["movieId"],
+            onDelete = ForeignKey.CASCADE
         )
     ],
-    indices = [Index("movieId")]
+    indices = [
+        Index("movieId"),
+        Index(value = ["feedType", "position"])
+    ]
 )
 data class DbMovieFeedCrossRef(
     val feedType: FeedType,

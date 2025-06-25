@@ -19,7 +19,7 @@ object DatabaseModule {
 
     @Singleton
     @Provides
-    fun providesDatabase(@ApplicationContext context: Context): MovieViewerDatabase {
+    fun providesMovieViewerDatabase(@ApplicationContext context: Context): MovieViewerDatabase {
         return Room.databaseBuilder(
             context.applicationContext,
             MovieViewerDatabase::class.java,

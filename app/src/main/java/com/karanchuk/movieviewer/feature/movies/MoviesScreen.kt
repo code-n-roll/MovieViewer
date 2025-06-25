@@ -3,11 +3,10 @@
 package com.karanchuk.movieviewer.feature.movies
 
 import androidx.annotation.StringRes
-import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -16,20 +15,23 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.paging.PagingData
 import com.karanchuk.movieviewer.R
-import com.karanchuk.movieviewer.feature.movies.ui.MoviesUiState
-import com.karanchuk.movieviewer.feature.movies.ui.components.MovieScreenShimmer
+import com.karanchuk.movieviewer.feature.movies.ui.components.card.MovieCardState
 import com.karanchuk.movieviewer.feature.movies.ui.components.section.MovieSection
+import kotlinx.coroutines.flow.Flow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MoviesScreen(
     @StringRes titleResId: Int,
-    state: MoviesUiState,
-    onItemClick: (Int) -> Unit,
-    onFavoriteClick: (Int) -> Unit,
+    sections: List<Pair<String, Flow<PagingData<MovieCardState>>>>,
+    onMovieDetailsClick: (Int) -> Unit,
 ) {
     Scaffold(
         modifier = Modifier,
@@ -42,44 +44,27 @@ fun MoviesScreen(
             )
         },
     ) { paddingValues ->
-        when (state) {
-            is MoviesUiState.Content -> Content(
-                state = state,
-                paddingValues = paddingValues,
-                onItemClick = onItemClick,
-            )
-            is MoviesUiState.Error -> Error()
-            is MoviesUiState.Loading -> Loading()
-        }
-    }
-}
-
-@Composable
-private fun Error() {
-    Text(text = "Error")
-}
-
-@Composable
-private fun Loading() {
-    MovieScreenShimmer()
-}
-
-@Composable
-private fun Content(
-    state: MoviesUiState.Content,
-    paddingValues: PaddingValues,
-    onItemClick: (Int) -> Unit,
-) {
-    LazyColumn(
-        modifier = Modifier.padding(paddingValues)
-    ) {
-        items(
-            state.feeds.values.toList()
+        LazyColumn(
+            contentPadding = paddingValues,
+            verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
-            MovieSection(
-                state = it,
-                onItemClick = onItemClick,
-            )
+            items(
+                count = sections.size,
+                key = { sections[it].first }
+            ) { index ->
+                Text(
+                    text = sections[index].first,
+                    modifier = Modifier.padding(start = 16.dp),
+                    style = TextStyle(
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Medium
+                    )
+                )
+                MovieSection(
+                    movies = sections[index].second,
+                    onItemClick = onMovieDetailsClick
+                )
+            }
         }
     }
 }
@@ -89,30 +74,7 @@ private fun Content(
 fun MoviesScreenSuccessPreview() {
     MoviesScreen(
         titleResId = R.string.screen_movies,
-        state = MoviesUiState.Content.Preview,
-        onItemClick = {},
-        onFavoriteClick = {},
-    )
-}
-
-@Preview
-@Composable
-fun MoviesScreenLoadingPreview() {
-    MoviesScreen(
-        titleResId = R.string.screen_movies,
-        state = MoviesUiState.Loading,
-        onItemClick = {},
-        onFavoriteClick = {},
-    )
-}
-
-@Preview
-@Composable
-fun MoviesScreenErrorPreview() {
-    MoviesScreen(
-        titleResId = R.string.screen_movies,
-        state = MoviesUiState.Error,
-        onItemClick = {},
-        onFavoriteClick = {},
+        sections = emptyList(),
+        onMovieDetailsClick = {}
     )
 }

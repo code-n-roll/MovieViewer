@@ -1,10 +1,9 @@
 package com.karanchuk.movieviewer.di
 
-import com.karanchuk.movieviewer.common.ImagePrefetcher
+import com.karanchuk.movieviewer.data.source.local.MovieViewerDatabase
 import com.karanchuk.movieviewer.repository.favorite_movies.db.dao.FavoriteMovieDao
 import com.karanchuk.movieviewer.repository.favorite_movies.domain.FavoriteMoviesRepository
 import com.karanchuk.movieviewer.repository.movies.api.MovieApi
-import com.karanchuk.movieviewer.repository.movies.db.dao.MoviesDao
 import com.karanchuk.movieviewer.repository.movies.domain.MoviesRepository
 import dagger.Module
 import dagger.Provides
@@ -19,17 +18,11 @@ class RepositoryModule {
     @Provides
     fun providesMoviesRepository(
         movieApi: MovieApi,
-        moviesDao: MoviesDao,
-        @DefaultDispatcher defaultDispatcher: CoroutineDispatcher,
-        @IoDispatcher ioDispatcher: CoroutineDispatcher,
-        imagePrefetcher: ImagePrefetcher,
+        movieViewerDatabase: MovieViewerDatabase,
     ): MoviesRepository {
         return MoviesRepository.create(
             movieApi = movieApi,
-            moviesDao = moviesDao,
-            defaultDispatcher = defaultDispatcher,
-            ioDispatcher = ioDispatcher,
-            imagePrefetcher = imagePrefetcher,
+            appDatabase = movieViewerDatabase,
         )
     }
 
