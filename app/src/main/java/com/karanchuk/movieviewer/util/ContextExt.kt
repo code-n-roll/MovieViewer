@@ -11,6 +11,7 @@ fun Context.openAppLanguageSettingsAppCompat() {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
         openAppLanguageSettings()
     } else {
+        // TODO: show dialog with language selection
         openAppInfo()
     }
 }
