@@ -32,9 +32,11 @@ object DatabaseModule {
         }.build()
     }
 
+    @Singleton
     @Provides
     fun providesMoviesDao(database: MovieViewerDatabase): MoviesDao = database.moviesDao()
 
+    @Singleton
     @Provides
     fun providesFavoriteMoviesDao(database: MovieViewerDatabase): FavoriteMovieDao = database.favoriteMovieDao()
 }

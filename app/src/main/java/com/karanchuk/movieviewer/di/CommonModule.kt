@@ -9,11 +9,13 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object CommonModule {
 
+    @Singleton
     @Provides
     fun providesImageLoader(@ApplicationContext appContext: Context): ImageLoader {
         return ImageLoader.Builder(appContext)
@@ -21,6 +23,7 @@ object CommonModule {
             .build()
     }
 
+    @Singleton
     @Provides
     fun providesImagePrefetcher(
         imageLoader: ImageLoader,
