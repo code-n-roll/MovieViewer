@@ -3,6 +3,18 @@
 - favorites movies with sorting (database)
 - localization (EN, RU)
 - light/dark/system default theme (datastore)
+TODO:
+- movie details
+- movie search
+- register/login (local db)
+- register/login (remote api)
+- built-it player ?
+
+## Tech practice
+- ELM implementation in Compose
+TODO:
+- testing
+- multi-module architecture
   
 ## Tech Stack
 - Kotlin
