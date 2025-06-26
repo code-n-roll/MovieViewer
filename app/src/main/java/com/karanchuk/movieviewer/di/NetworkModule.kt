@@ -1,5 +1,6 @@
 package com.karanchuk.movieviewer.di
 
+import com.karanchuk.movieviewer.BuildConfig
 import com.karanchuk.movieviewer.data.source.network.ApiConstants
 import com.karanchuk.movieviewer.data.source.network.ApiKeyInterceptor
 import com.karanchuk.movieviewer.repository.movies.api.MovieApi
@@ -22,7 +23,11 @@ object NetworkModule {
     fun provideOkHttpClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(ApiKeyInterceptor(apiKey = ApiConstants.API_KEY))
-            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .apply {
+                if (BuildConfig.DEBUG) {
+                    addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                }
+            }
             .build()
     }
 
