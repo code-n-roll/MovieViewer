@@ -1,6 +1,9 @@
-## API
-TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
-
+## Features
+- fetch movies with paging (network + DB)
+- favorites movies with sorting
+- localization
+- light/dark theme
+  
 ## Tech Stack
 - Kotlin
 - Coroutines/Flow
@@ -21,4 +24,8 @@ TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
 ## How to setup
 1. Create local.properties in project root
 2. Create API_KEY https://www.themoviedb.org/settings/api
-3. Add `API_KEY = <your_api_key>` to `local.properties`  
+3. Add `API_KEY = <your_api_key>` to `local.properties`
+
+
+## API
+TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
