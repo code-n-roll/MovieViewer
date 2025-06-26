@@ -8,7 +8,6 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -22,12 +21,9 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.karanchuk.movieviewer.MovieViewerDestinationsArgs.MOVIE_ID_ARG
-import com.karanchuk.movieviewer.feature.favorite_movies.FavoriteMoviesScreen
-import com.karanchuk.movieviewer.feature.favorite_movies.FavoriteMoviesViewModel
-import com.karanchuk.movieviewer.feature.movie_details.MovieDetailsScreen
-import com.karanchuk.movieviewer.feature.movie_details.MovieDetailsViewModel
-import com.karanchuk.movieviewer.feature.movies.MoviesScreen
-import com.karanchuk.movieviewer.feature.movies.MoviesViewModel
+import com.karanchuk.movieviewer.feature.favorite_movies.FavoriteMoviesRoute
+import com.karanchuk.movieviewer.feature.movie_details.MovieDetailsRoute
+import com.karanchuk.movieviewer.feature.movies.MoviesRoute
 import com.karanchuk.movieviewer.feature.settings.SettingsRoute
 
 @Composable
@@ -76,21 +72,15 @@ fun NavGraph(
             startDestination = startDestination,
         ) {
             composable(MovieViewerDestinations.MOVIES_ROUTE) { navBackStackEntry ->
-                val vm: MoviesViewModel = hiltViewModel(navBackStackEntry)
-
-                MoviesScreen(
-                    titleResId = R.string.screen_movies,
-                    sections = vm.sections,
-                    onMovieDetailsClick = { movieId -> navActions.navigateToMovieDetails(movieId) }
+                MoviesRoute(
+                    vm = hiltViewModel(navBackStackEntry),
+                    navActions = navActions,
                 )
             }
             composable(MovieViewerDestinations.FAVORITES_ROUTE) { navBackStackEntry ->
-                val vm: FavoriteMoviesViewModel = hiltViewModel(navBackStackEntry)
-                val state = vm.uiState.collectAsState()
-                FavoriteMoviesScreen(
-                    state = state.value,
-                    onMovieDetailsClick = { movieId -> navActions.navigateToMovieDetails(movieId) },
-                    onSortSelected = { vm.onSortSelected(it) },
+                FavoriteMoviesRoute(
+                    vm = hiltViewModel(navBackStackEntry),
+                    navActions = navActions,
                 )
             }
             composable(MovieViewerDestinations.SETTINGS_ROUTE) { navBackStackEntry ->
@@ -100,13 +90,11 @@ fun NavGraph(
                 route = MovieViewerDestinations.MOVIE_DETAILS_ROUTE,
                 arguments = listOf(navArgument(MOVIE_ID_ARG) { type = NavType.IntType })
             ) { navBackStackEntry ->
-                val vm: MovieDetailsViewModel = hiltViewModel(navBackStackEntry)
-                val state = vm.uiState.collectAsState()
                 navBackStackEntry.arguments?.getInt(MOVIE_ID_ARG)?.let { movieId ->
-                    MovieDetailsScreen(
-                        onBackClick = { navController.popBackStack() },
-                        onFavoriteClick = { vm.onFavoriteClick(movieId) },
-                        state = state.value,
+                    MovieDetailsRoute(
+                        vm = hiltViewModel(navBackStackEntry),
+                        navController = navController,
+                        movieId = movieId,
                     )
                 }
             }

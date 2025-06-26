@@ -71,7 +71,7 @@ fun MoviesScreen(
 
 @Preview
 @Composable
-fun MoviesScreenSuccessPreview() {
+fun MoviesScreenPreview() {
     MoviesScreen(
         titleResId = R.string.screen_movies,
         sections = emptyList(),
