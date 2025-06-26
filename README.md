@@ -12,6 +12,9 @@ TODO:
 - built-it player ?
 
 ## Tech practice
+- Work with databases, datastore
+- MVVM Compose + Hilt + Jetpack Compose Navigation
+- Work with paging
 - ELM implementation in Compose
   
 TODO:
@@ -25,7 +28,7 @@ TODO:
 - Compose UI
 - Room/DataStore
 - Retrofit + OkHttp
-- Paging
+- Jetpack Paging 3
 - Hilt
 - Jetpack Compose Navigation
 - Coil
