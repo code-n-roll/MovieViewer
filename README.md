@@ -3,6 +3,7 @@
 - favorites movies with sorting (database)
 - localization (EN, RU)
 - light/dark/system default theme (datastore)
+  
 TODO:
 - movie details
 - movie search
@@ -12,6 +13,7 @@ TODO:
 
 ## Tech practice
 - ELM implementation in Compose
+  
 TODO:
 - testing
 - multi-module architecture
