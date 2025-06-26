@@ -2,7 +2,7 @@
 - fetch movies by category with paging (network + database)
 - favorites movies with sorting (database)
 - localization (EN, RU)
-- light/dark/system default theme
+- light/dark/system default theme (datastore)
   
 ## Tech Stack
 - Kotlin
