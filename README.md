@@ -1,8 +1,8 @@
 ## Features
-- fetch movies with paging (network + DB)
-- favorites movies with sorting
-- localization
-- light/dark theme
+- fetch movies by category with paging (network + database)
+- favorites movies with sorting (database)
+- localization (EN, RU)
+- light/dark/system default theme
   
 ## Tech Stack
 - Kotlin
