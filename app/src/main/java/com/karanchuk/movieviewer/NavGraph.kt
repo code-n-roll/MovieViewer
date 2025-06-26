@@ -12,6 +12,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -27,8 +28,7 @@ import com.karanchuk.movieviewer.feature.movie_details.MovieDetailsScreen
 import com.karanchuk.movieviewer.feature.movie_details.MovieDetailsViewModel
 import com.karanchuk.movieviewer.feature.movies.MoviesScreen
 import com.karanchuk.movieviewer.feature.movies.MoviesViewModel
-import com.karanchuk.movieviewer.feature.settings.SettingsScreen
-import com.karanchuk.movieviewer.feature.settings.SettingsScreenViewModel
+import com.karanchuk.movieviewer.feature.settings.SettingsRoute
 
 @Composable
 fun NavGraph(
@@ -62,7 +62,7 @@ fun NavGraph(
                                     contentDescription = destination.contentDescription
                                 )
                             },
-                            label = { Text(destination.label) }
+                            label = { Text(stringResource(destination.stringResId)) }
                         )
                     }
                 }
@@ -94,12 +94,7 @@ fun NavGraph(
                 )
             }
             composable(MovieViewerDestinations.SETTINGS_ROUTE) { navBackStackEntry ->
-                val vm: SettingsScreenViewModel = hiltViewModel(navBackStackEntry)
-                val state = vm.uiState.collectAsState()
-                SettingsScreen(
-                    state = state.value,
-                    onChangeAppThemeClick = { option -> vm.onChangeAppThemeClick(option) },
-                )
+                SettingsRoute(vm = hiltViewModel(navBackStackEntry))
             }
             composable(
                 route = MovieViewerDestinations.MOVIE_DETAILS_ROUTE,

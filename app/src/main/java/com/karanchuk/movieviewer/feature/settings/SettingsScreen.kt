@@ -1,5 +1,6 @@
 package com.karanchuk.movieviewer.feature.settings
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
@@ -24,6 +25,7 @@ import com.karanchuk.movieviewer.feature.settings.component.theme_dialog.AppThem
 fun SettingsScreen(
     state: SettingsScreenState,
     onChangeAppThemeClick: (AppTheme) -> Unit,
+    onChangeLanguageClick: () -> Unit,
 ) {
     val showThemeDialog = remember { mutableStateOf(false) }
 
@@ -37,13 +39,19 @@ fun SettingsScreen(
         }
     ) { paddingValues ->
         Column(
-            modifier = Modifier.padding(paddingValues)
+            modifier = Modifier.padding(paddingValues),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             Setting(
                 state = state.appThemeSettingState,
                 onClick = {
                     showThemeDialog.value = !showThemeDialog.value
                 },
+            )
+
+            Setting(
+                state = state.languageSettingState,
+                onClick = onChangeLanguageClick,
             )
 
             AppThemeSettingDialog(
@@ -61,6 +69,7 @@ fun SettingsScreen(
 fun SettingsScreenPreview() {
     SettingsScreen(
         state = SettingsScreenState.Default,
-        onChangeAppThemeClick = {}
+        onChangeAppThemeClick = {},
+        onChangeLanguageClick = {},
     )
 }

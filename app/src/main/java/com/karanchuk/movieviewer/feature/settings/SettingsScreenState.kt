@@ -8,6 +8,7 @@ import com.karanchuk.movieviewer.feature.settings.component.theme_dialog.AppThem
 data class SettingsScreenState(
     val appThemeSettingState: SettingState,
     val appThemeSettingDialogState: AppThemeSettingDialogState,
+    val languageSettingState: SettingState,
 ) {
     companion object {
         val Default = SettingsScreenState(
@@ -20,7 +21,8 @@ data class SettingsScreenState(
                 ),
                 selectedTheme = AppTheme.SYSTEM_DEFAULT,
                 titleResId = R.string.change_theme_title
-            )
+            ),
+            languageSettingState = SettingState.Language
         )
     }
 }

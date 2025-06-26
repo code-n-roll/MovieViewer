@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
 import com.karanchuk.movieviewer.common.toMovieCardState
-import com.karanchuk.movieviewer.common.toTitle
+import com.karanchuk.movieviewer.common.toStringResId
 import com.karanchuk.movieviewer.repository.movies.db.model.FeedType
 import com.karanchuk.movieviewer.repository.movies.domain.MoviesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -39,6 +39,6 @@ class MoviesViewModel @Inject constructor(
             FeedType.TOP_RATED to topRatedFlow,
             FeedType.NOW_PLAYING to nowPlayingFlow,
             FeedType.UPCOMING to upcomingFlow,
-        ).map { (feedType, flow) -> feedType.toTitle() to flow }
+        ).map { (feedType, flow) -> feedType.toStringResId() to flow }
     }
 }

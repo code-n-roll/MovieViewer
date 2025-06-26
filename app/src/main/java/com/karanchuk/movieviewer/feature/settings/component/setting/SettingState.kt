@@ -2,6 +2,7 @@ package com.karanchuk.movieviewer.feature.settings.component.setting
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Language
 import androidx.compose.material.icons.rounded.Lightbulb
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.karanchuk.movieviewer.R
@@ -16,6 +17,11 @@ data class SettingState(
             imageVector = Icons.Rounded.Lightbulb,
             title = R.string.change_theme_title,
             subtitle = R.string.app_theme_system_default,
+        )
+        val Language = SettingState(
+            imageVector = Icons.Rounded.Language,
+            title = R.string.change_language_title,
+            subtitle = R.string.language_english,
         )
     }
 }

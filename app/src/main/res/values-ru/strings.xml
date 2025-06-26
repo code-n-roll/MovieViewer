@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MovieViewer</string>
+    <string name="sort_by_title_asc">По названию А-Я</string>
+    <string name="sort_by_title_desc">По названию Я-А</string>
+    <string name="sort_by_release_date_asc">По дате релиза (старейшие)</string>
+    <string name="sort_by_release_date_desc">По дате релиза (новейшие)</string>
+    <string name="sort_by_date_added_asc">По дате добавления (старейшие)</string>
+    <string name="sort_by_date_added_desc">По дате добавления (новейшие)</string>
+    <string name="screen_movies">Фильмы</string>
+    <string name="screen_favorites">Избранное</string>
+    <string name="screen_settings">Настройки</string>
+    <string name="app_theme_light">Светлая</string>
+    <string name="app_theme_dark">Тёмная</string>
+    <string name="app_theme_system_default">Системная (по умолчанию)</string>
+    <string name="change_theme_title">Изменить тему</string>
+    <string name="change_language_title">Изменить язык</string>
+    <string name="language_english">Английский</string>
+    <string name="movie_category_popular">Популярные</string>
+    <string name="movie_category_now_playing">Смотрят сейчас</string>
+    <string name="movie_category_top_rated">Рейтинговые</string>
+    <string name="movie_category_upcoming">Скоро выйдут</string>
+</resources>

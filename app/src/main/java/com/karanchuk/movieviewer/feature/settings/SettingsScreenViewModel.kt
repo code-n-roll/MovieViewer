@@ -8,9 +8,11 @@ import com.karanchuk.movieviewer.common.AppTheme
 import com.karanchuk.movieviewer.di.USER_PREFERENCES_KEY_THEME
 import com.karanchuk.movieviewer.repository.settings.domain.SettingsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -24,6 +26,10 @@ fun AppTheme.toStringRes(): Int {
     }
 }
 
+sealed interface SettingsScreenEffect {
+    data object OpenAppInfo : SettingsScreenEffect
+}
+
 @HiltViewModel
 class SettingsScreenViewModel @Inject constructor(
     private val settingsRepository: SettingsRepository,
@@ -31,6 +37,9 @@ class SettingsScreenViewModel @Inject constructor(
 
     private val _uiState = MutableStateFlow(SettingsScreenState.Default)
     val uiState = _uiState.asStateFlow()
+
+    private val _effects = Channel<SettingsScreenEffect>(Channel.BUFFERED)
+    val effects = _effects.receiveAsFlow()
 
     init {
         viewModelScope.launch {
@@ -49,5 +58,9 @@ class SettingsScreenViewModel @Inject constructor(
 
     fun onChangeAppThemeClick(selection: AppTheme) = viewModelScope.launch {
         settingsRepository.savePreferenceSelection(USER_PREFERENCES_KEY_THEME, selection.ordinal)
+    }
+
+    fun onChangeLanguageClick() = viewModelScope.launch {
+        _effects.send(SettingsScreenEffect.OpenAppInfo)
     }
 }

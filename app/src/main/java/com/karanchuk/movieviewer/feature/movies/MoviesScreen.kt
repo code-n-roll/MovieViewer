@@ -30,7 +30,7 @@ import kotlinx.coroutines.flow.Flow
 @Composable
 fun MoviesScreen(
     @StringRes titleResId: Int,
-    sections: List<Pair<String, Flow<PagingData<MovieCardState>>>>,
+    sections: List<Pair<Int, Flow<PagingData<MovieCardState>>>>,
     onMovieDetailsClick: (Int) -> Unit,
 ) {
     Scaffold(
@@ -53,7 +53,7 @@ fun MoviesScreen(
                 key = { sections[it].first }
             ) { index ->
                 Text(
-                    text = sections[index].first,
+                    text = stringResource(sections[index].first),
                     modifier = Modifier.padding(start = 16.dp),
                     style = TextStyle(
                         fontSize = 22.sp,

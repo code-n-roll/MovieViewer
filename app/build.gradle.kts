@@ -47,6 +47,10 @@ android {
         compose = true
         buildConfig = true
     }
+
+    androidResources {
+        generateLocaleConfig = true
+    }
 }
 
 // extension on Project to read a property from local.properties
@@ -69,6 +73,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.appcompat)
 
     // Hilt
     implementation(libs.hilt.android.core)

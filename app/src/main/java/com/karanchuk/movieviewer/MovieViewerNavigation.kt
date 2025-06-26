@@ -1,5 +1,6 @@
 package com.karanchuk.movieviewer
 
+import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
@@ -11,13 +12,13 @@ import com.karanchuk.movieviewer.MovieViewerScreens.MOVIE_DETAILS_SCREEN
 
 enum class BottomBarDestination(
     val route: String,
-    val label: String,
+    @StringRes val stringResId: Int,
     val icon: ImageVector,
     val contentDescription: String
 ) {
-    MOVIES(MovieViewerDestinations.MOVIES_ROUTE, "Movies", Icons.Default.Home, "Movies"),
-    FAVORITES(MovieViewerDestinations.FAVORITES_ROUTE, "Favorites", Icons.Default.Favorite, "Favorite"),
-    SETTINGS(MovieViewerDestinations.SETTINGS_ROUTE, "Settings", Icons.Default.Settings, "Settings")
+    MOVIES(MovieViewerDestinations.MOVIES_ROUTE, R.string.screen_movies, Icons.Default.Home, "Movies"),
+    FAVORITES(MovieViewerDestinations.FAVORITES_ROUTE, R.string.screen_favorites, Icons.Default.Favorite, "Favorite"),
+    SETTINGS(MovieViewerDestinations.SETTINGS_ROUTE, R.string.screen_settings, Icons.Default.Settings, "Settings")
 }
 
 private object MovieViewerScreens {
