@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.karanchuk.movieviewer.ui.theme.MovieViewerTheme
+import com.karanchuk.movieviewer.feature.main.MainScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -16,9 +16,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
 
         setContent {
-            MovieViewerTheme {
-                NavGraph()
-            }
+            MainScreen()
         }
     }
 }

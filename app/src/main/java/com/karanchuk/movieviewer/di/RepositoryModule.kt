@@ -1,6 +1,9 @@
 package com.karanchuk.movieviewer.di
 
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
 import com.karanchuk.movieviewer.data.source.local.MovieViewerDatabase
+import com.karanchuk.movieviewer.repository.settings.domain.SettingsRepository
 import com.karanchuk.movieviewer.repository.favorite_movies.db.dao.FavoriteMovieDao
 import com.karanchuk.movieviewer.repository.favorite_movies.domain.FavoriteMoviesRepository
 import com.karanchuk.movieviewer.repository.movies.api.MovieApi
@@ -35,5 +38,12 @@ class RepositoryModule {
             dao = dao,
             ioDispatcher = ioDispatcher
         )
+    }
+    
+    @Provides
+    fun providesSettingsRepository(
+        dataStore: DataStore<Preferences>
+    ): SettingsRepository {
+        return SettingsRepository.create(dataStore)
     }
 }

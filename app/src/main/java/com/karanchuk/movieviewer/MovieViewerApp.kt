@@ -9,6 +9,11 @@ class MovieViewerApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+
+        setupTimber()
+    }
+
+    private fun setupTimber() {
         if (BuildConfig.DEBUG) Timber.plant(Timber.DebugTree())
     }
 }

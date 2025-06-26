@@ -27,6 +27,8 @@ import com.karanchuk.movieviewer.feature.movie_details.MovieDetailsScreen
 import com.karanchuk.movieviewer.feature.movie_details.MovieDetailsViewModel
 import com.karanchuk.movieviewer.feature.movies.MoviesScreen
 import com.karanchuk.movieviewer.feature.movies.MoviesViewModel
+import com.karanchuk.movieviewer.feature.settings.SettingsScreen
+import com.karanchuk.movieviewer.feature.settings.SettingsScreenViewModel
 
 @Composable
 fun NavGraph(
@@ -91,8 +93,13 @@ fun NavGraph(
                     onSortSelected = { vm.onSortSelected(it) },
                 )
             }
-            composable(MovieViewerDestinations.SETTINGS_ROUTE) {
-
+            composable(MovieViewerDestinations.SETTINGS_ROUTE) { navBackStackEntry ->
+                val vm: SettingsScreenViewModel = hiltViewModel(navBackStackEntry)
+                val state = vm.uiState.collectAsState()
+                SettingsScreen(
+                    state = state.value,
+                    onChangeAppThemeClick = { option -> vm.onChangeAppThemeClick(option) },
+                )
             }
             composable(
                 route = MovieViewerDestinations.MOVIE_DETAILS_ROUTE,
