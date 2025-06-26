@@ -6,7 +6,7 @@ TMDB API - https://developer.themoviedb.org/reference/intro/getting-started
 - Coroutines/Flow
 - MVVM
 - Compose UI
-- Room
+- Room/DataStore
 - Retrofit + OkHttp
 - Paging
 - Hilt
