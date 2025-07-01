@@ -2,16 +2,16 @@ package com.karanchuk.movieviewer.feature.settings
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.karanchuk.movieviewer.util.openAppLanguageSettingsAppCompat
 
 @Composable
 fun SettingsRoute(
     vm: SettingsScreenViewModel,
 ) {
-    val uiState by vm.uiState.collectAsState()
+    val uiState by vm.uiState.collectAsStateWithLifecycle()
 
     val context = LocalContext.current
     LaunchedEffect(vm.effects) {
