@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import androidx.paging.map
+import com.karanchuk.movieviewer.R
 import com.karanchuk.movieviewer.common.toMovieCardState
 import com.karanchuk.movieviewer.common.toStringResId
 import com.karanchuk.movieviewer.repository.movies.db.model.FeedType
@@ -33,12 +34,19 @@ class MoviesViewModel @Inject constructor(
         .map { pagingData -> pagingData.map { it.toMovieCardState() } }
         .cachedIn(viewModelScope)
 
-    val sections by lazy {
+    private val sections by lazy {
         listOf(
             FeedType.POPULAR to popularFlow,
             FeedType.TOP_RATED to topRatedFlow,
             FeedType.NOW_PLAYING to nowPlayingFlow,
             FeedType.UPCOMING to upcomingFlow,
         ).map { (feedType, flow) -> feedType.toStringResId() to flow }
+    }
+
+    val state by lazy {
+        MoviesScreenState(
+            titleResId = R.string.screen_movies,
+            sections = sections,
+        )
     }
 }

@@ -1,11 +1,13 @@
 package com.karanchuk.movieviewer.feature.movies.ui.components.section
 
+import androidx.compose.runtime.Stable
 import androidx.paging.PagingData
 import com.karanchuk.movieviewer.feature.movies.ui.components.card.MovieCardState
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 
+@Stable
 data class MovieSectionState(
     val movies: Flow<PagingData<MovieCardState>>,
 ) {

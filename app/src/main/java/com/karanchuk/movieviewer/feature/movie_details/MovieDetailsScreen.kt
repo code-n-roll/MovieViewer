@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.Immutable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -29,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
+@Immutable
 data class Header(
     val imageUrl: String,
     val title: String,
@@ -79,6 +81,7 @@ data class Information(
     val productionCompanies: String,
 )
 
+@Immutable
 data class Content(
     val header: Header,
     val cast: List<Cast>,

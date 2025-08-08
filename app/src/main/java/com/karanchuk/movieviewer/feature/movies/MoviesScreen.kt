@@ -2,7 +2,6 @@
 
 package com.karanchuk.movieviewer.feature.movies
 
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
@@ -20,17 +19,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.paging.PagingData
-import com.karanchuk.movieviewer.R
-import com.karanchuk.movieviewer.feature.movies.ui.components.card.MovieCardState
 import com.karanchuk.movieviewer.feature.movies.ui.components.section.MovieSection
-import kotlinx.coroutines.flow.Flow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MoviesScreen(
-    @StringRes titleResId: Int,
-    sections: List<Pair<Int, Flow<PagingData<MovieCardState>>>>,
+    state: MoviesScreenState,
     onMovieDetailsClick: (Int) -> Unit,
 ) {
     Scaffold(
@@ -38,7 +32,7 @@ fun MoviesScreen(
         contentWindowInsets = WindowInsets(0.dp),
         topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(titleResId)) },
+                title = { Text(text = stringResource(state.titleResId)) },
                 colors = TopAppBarDefaults.topAppBarColors(),
                 windowInsets = WindowInsets(0.dp)
             )
@@ -49,11 +43,11 @@ fun MoviesScreen(
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             items(
-                count = sections.size,
-                key = { sections[it].first }
+                count = state.sections.size,
+                key = { state.sections[it].first }
             ) { index ->
                 Text(
-                    text = stringResource(sections[index].first),
+                    text = stringResource(state.sections[index].first),
                     modifier = Modifier.padding(start = 16.dp),
                     style = TextStyle(
                         fontSize = 22.sp,
@@ -61,7 +55,7 @@ fun MoviesScreen(
                     )
                 )
                 MovieSection(
-                    movies = sections[index].second,
+                    movies = state.sections[index].second,
                     onItemClick = onMovieDetailsClick
                 )
             }
@@ -73,8 +67,7 @@ fun MoviesScreen(
 @Composable
 fun MoviesScreenPreview() {
     MoviesScreen(
-        titleResId = R.string.screen_movies,
-        sections = emptyList(),
+        state = MoviesScreenState.Preview,
         onMovieDetailsClick = {}
     )
 }

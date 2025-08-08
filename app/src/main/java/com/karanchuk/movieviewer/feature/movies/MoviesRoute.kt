@@ -10,8 +10,7 @@ fun MoviesRoute(
     navActions: MovieViewerNavigationActions
 ) {
     MoviesScreen(
-        titleResId = R.string.screen_movies,
-        sections = vm.sections,
+        state = vm.state,
         onMovieDetailsClick = { movieId -> navActions.navigateToMovieDetails(movieId) }
     )
 }
