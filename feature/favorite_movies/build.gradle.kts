@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "com.karanchuk.favorite_movies"
+    namespace = "com.karanchuk.feature.favorite_movies"
     compileSdk = 36
 
     defaultConfig {
