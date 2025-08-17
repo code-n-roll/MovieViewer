@@ -7,6 +7,7 @@ import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
+import com.karanchuk.common.ui.R
 import com.karanchuk.movieviewer.MovieViewerDestinationsArgs.MOVIE_ID_ARG
 import com.karanchuk.movieviewer.MovieViewerScreens.MOVIE_DETAILS_SCREEN
 

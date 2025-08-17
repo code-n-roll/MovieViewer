@@ -4,7 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.karanchuk.movieviewer.MovieViewerDestinationsArgs.MOVIE_ID_ARG
-import com.karanchuk.movieviewer.repository.favorite_movies.domain.FavoriteMoviesRepository
+import com.karanchuk.repository.favorite_movies.FavoriteMoviesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

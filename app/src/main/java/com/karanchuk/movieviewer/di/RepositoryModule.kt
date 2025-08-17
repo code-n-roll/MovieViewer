@@ -2,12 +2,11 @@ package com.karanchuk.movieviewer.di
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
-import com.karanchuk.movieviewer.data.source.local.MovieViewerDatabase
+import com.karanchuk.common.model.di.IoDispatcher
+import com.karanchuk.core.dao.favorite_movie.FavoriteMovieDao
 import com.karanchuk.movieviewer.repository.settings.domain.SettingsRepository
-import com.karanchuk.movieviewer.repository.favorite_movies.db.dao.FavoriteMovieDao
-import com.karanchuk.movieviewer.repository.favorite_movies.domain.FavoriteMoviesRepository
-import com.karanchuk.movieviewer.repository.movies.api.MovieApi
-import com.karanchuk.movieviewer.repository.movies.domain.MoviesRepository
+import com.karanchuk.repository.favorite_movies.FavoriteMoviesRepository
+import com.karanchuk.repository.movies.domain.MoviesRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -20,8 +19,8 @@ class RepositoryModule {
 
     @Provides
     fun providesMoviesRepository(
-        movieApi: MovieApi,
-        movieViewerDatabase: MovieViewerDatabase,
+        movieApi: com.karanchuk.repository.movies.api.MovieApi,
+        movieViewerDatabase: com.karanchuk.core.db.MovieViewerDatabase,
     ): MoviesRepository {
         return MoviesRepository.create(
             movieApi = movieApi,

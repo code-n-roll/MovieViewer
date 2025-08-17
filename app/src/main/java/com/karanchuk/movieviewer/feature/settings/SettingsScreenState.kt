@@ -1,9 +1,9 @@
 package com.karanchuk.movieviewer.feature.settings
 
-import com.karanchuk.movieviewer.R
 import com.karanchuk.movieviewer.common.AppTheme
 import com.karanchuk.movieviewer.feature.settings.component.setting.SettingState
 import com.karanchuk.movieviewer.feature.settings.component.theme_dialog.AppThemeSettingDialogState
+import com.karanchuk.common.ui.R
 
 data class SettingsScreenState(
     val appThemeSettingState: SettingState,

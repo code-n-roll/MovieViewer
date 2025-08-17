@@ -21,4 +21,11 @@ dependencyResolutionManagement {
 
 rootProject.name = "MovieViewer"
 include(":app")
- 
+include(":common:model")
+include(":common:ui")
+include(":common:util")
+include(":core:db")
+include(":feature:favorite_movies")
+include(":feature:movies")
+include(":repository:favorite_movies")
+include(":repository:movies")

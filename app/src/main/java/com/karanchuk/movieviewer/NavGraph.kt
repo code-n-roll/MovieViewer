@@ -23,7 +23,7 @@ import androidx.navigation.navArgument
 import com.karanchuk.movieviewer.MovieViewerDestinationsArgs.MOVIE_ID_ARG
 import com.karanchuk.movieviewer.feature.favorite_movies.FavoriteMoviesRoute
 import com.karanchuk.movieviewer.feature.movie_details.MovieDetailsRoute
-import com.karanchuk.movieviewer.feature.movies.MoviesRoute
+import com.karanchuk.feature.movies.MoviesRoute
 import com.karanchuk.movieviewer.feature.settings.SettingsRoute
 
 @Composable
@@ -74,7 +74,7 @@ fun NavGraph(
             composable(MovieViewerDestinations.MOVIES_ROUTE) { navBackStackEntry ->
                 MoviesRoute(
                     vm = hiltViewModel(navBackStackEntry),
-                    navActions = navActions,
+                    onMovieDetailsClick = { movieId -> navActions.navigateToMovieDetails(movieId) }
                 )
             }
             composable(MovieViewerDestinations.FAVORITES_ROUTE) { navBackStackEntry ->

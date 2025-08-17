@@ -2,10 +2,10 @@ package com.karanchuk.movieviewer.feature.favorite_movies
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.karanchuk.movieviewer.common.toMovieCardState
-import com.karanchuk.movieviewer.repository.favorite_movies.domain.DomainSort
-import com.karanchuk.movieviewer.repository.favorite_movies.domain.FavoriteMoviesRepository
-import com.karanchuk.movieviewer.repository.movies.domain.Movie
+import com.karanchuk.common.model.domain.Movie
+import com.karanchuk.common.ui.card.MovieCardState
+import com.karanchuk.repository.favorite_movies.DomainSort
+import com.karanchuk.repository.favorite_movies.FavoriteMoviesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,7 +28,7 @@ class FavoriteMoviesViewModel @Inject constructor(
         _sortOption.flatMapLatest { sortOption ->
             favoriteMoviesRepository.getFavoriteMovies(sortOption).map { movies ->
                 FavoriteMoviesScreenState.Empty.copy(
-                    movies = movies.map(Movie::toMovieCardState),
+                    movies = movies.map { it.toMovieCardState() },
                     selectedDomainSort = sortOption
                 )
             }
@@ -40,5 +40,13 @@ class FavoriteMoviesViewModel @Inject constructor(
 
     fun onSortSelected(sortOption: DomainSort) {
         _sortOption.value = sortOption
+    }
+
+    private fun Movie.toMovieCardState(): MovieCardState {
+        return MovieCardState(
+            id = id,
+            title = title,
+            posterUrl = posterUrl,
+        )
     }
 }

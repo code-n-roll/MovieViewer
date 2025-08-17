@@ -28,10 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.karanchuk.movieviewer.feature.movies.ui.components.card.MovieCard
-import com.karanchuk.movieviewer.feature.movies.ui.components.card.MovieCardState
-import com.karanchuk.movieviewer.repository.favorite_movies.domain.DomainSort
-import com.karanchuk.movieviewer.repository.favorite_movies.domain.toTitle
+import com.karanchuk.repository.favorite_movies.DomainSort
+import com.karanchuk.repository.favorite_movies.toTitle
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -96,7 +94,7 @@ fun Error() {
 
 @Composable
 fun Content(
-    movies: List<MovieCardState>,
+    movies: List<com.karanchuk.common.ui.card.MovieCardState>,
     paddingValues: PaddingValues,
     onMovieDetailsClick: (Int) -> Unit,
 ) {
@@ -111,7 +109,7 @@ fun Content(
             items = movies,
             key = { index, item -> if (index == 0) 0 else item.id }
         ) { _, movie ->
-            MovieCard(
+            com.karanchuk.common.ui.card.MovieCard(
                 modifier = Modifier.animateItem(),
                 state = movie,
                 onItemClick = onMovieDetailsClick

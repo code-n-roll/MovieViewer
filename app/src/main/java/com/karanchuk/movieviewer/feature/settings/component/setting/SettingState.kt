@@ -5,7 +5,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Language
 import androidx.compose.material.icons.rounded.Lightbulb
 import androidx.compose.ui.graphics.vector.ImageVector
-import com.karanchuk.movieviewer.R
+import com.karanchuk.common.ui.R
 
 data class SettingState(
     val imageVector: ImageVector,

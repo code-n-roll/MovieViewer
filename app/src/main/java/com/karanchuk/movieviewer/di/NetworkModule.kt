@@ -1,9 +1,9 @@
 package com.karanchuk.movieviewer.di
 
+import com.karanchuk.common.model.api.ApiConstants
 import com.karanchuk.movieviewer.BuildConfig
-import com.karanchuk.movieviewer.data.source.network.ApiConstants
 import com.karanchuk.movieviewer.data.source.network.ApiKeyInterceptor
-import com.karanchuk.movieviewer.repository.movies.api.MovieApi
+import com.karanchuk.repository.movies.api.MovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

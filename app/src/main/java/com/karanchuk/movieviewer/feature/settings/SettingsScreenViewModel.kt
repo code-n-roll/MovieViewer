@@ -3,7 +3,6 @@ package com.karanchuk.movieviewer.feature.settings
 import androidx.annotation.StringRes
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.karanchuk.movieviewer.R
 import com.karanchuk.movieviewer.common.AppTheme
 import com.karanchuk.movieviewer.di.USER_PREFERENCES_KEY_THEME
 import com.karanchuk.movieviewer.repository.settings.domain.SettingsRepository
@@ -16,6 +15,7 @@ import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.karanchuk.common.ui.R
 
 @StringRes
 fun AppTheme.toStringRes(): Int {

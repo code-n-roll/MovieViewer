@@ -20,8 +20,6 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-
-        buildConfigField("String", "API_KEY", "\"${getApiKey("API_KEY")}\"")
     }
 
     buildTypes {
@@ -55,14 +53,16 @@ android {
     }
 }
 
-// extension on Project to read a property from local.properties
-fun Project.getApiKey(key: String): String =
-    Properties().run {
-        load(rootProject.file("local.properties").inputStream())
-        getProperty(key)
-    }
-
 dependencies {
+
+    implementation(project(":common:model"))
+    implementation(project(":common:ui"))
+    implementation(project(":common:util"))
+    implementation(project(":core:db"))
+    implementation(project(":feature:movies"))
+    implementation(project(":feature:favorite_movies"))
+    implementation(project(":repository:movies"))
+    implementation(project(":repository:favorite_movies"))
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 
@@ -70,11 +70,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    implementation(libs.androidx.compose.material.icons.extended)
     implementation(libs.androidx.appcompat)
 
     // Hilt

@@ -15,10 +15,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.karanchuk.movieviewer.R
 import com.karanchuk.movieviewer.common.AppTheme
 import com.karanchuk.movieviewer.feature.settings.component.setting.Setting
 import com.karanchuk.movieviewer.feature.settings.component.theme_dialog.AppThemeSettingDialog
+import com.karanchuk.common.ui.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

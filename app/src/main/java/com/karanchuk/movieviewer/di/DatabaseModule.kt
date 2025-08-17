@@ -2,10 +2,10 @@ package com.karanchuk.movieviewer.di
 
 import android.content.Context
 import androidx.room.Room
+import com.karanchuk.core.dao.movies.MoviesDao
+import com.karanchuk.core.db.MovieViewerDatabase
 import com.karanchuk.movieviewer.BuildConfig
-import com.karanchuk.movieviewer.data.source.local.MovieViewerDatabase
-import com.karanchuk.movieviewer.repository.favorite_movies.db.dao.FavoriteMovieDao
-import com.karanchuk.movieviewer.repository.movies.db.dao.MoviesDao
+import com.karanchuk.core.dao.favorite_movie.FavoriteMovieDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
