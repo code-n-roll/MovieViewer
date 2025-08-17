@@ -32,7 +32,7 @@ TODO:
 - Hilt
 - Jetpack Compose Navigation
 - Coil
-- Gson
+- kotlinx.serialization
 
 ## Screenshots
 <img src=https://github.com/user-attachments/assets/22e68643-7e0d-4199-998b-f2967d7540b3 width=350/>
