@@ -35,12 +35,19 @@ object NetworkModule {
 
     @Singleton
     @Provides
+    fun provideJson() = Json {
+        ignoreUnknownKeys = true
+    }
+
+    @Singleton
+    @Provides
     fun provideRetrofit(
-        client: OkHttpClient
+        client: OkHttpClient,
+        json: Json,
     ): Retrofit {
         return Retrofit.Builder()
             .baseUrl(ApiConstants.BASE_URL)
-            .addConverterFactory(Json.asConverterFactory("application/json; charset=UTF8".toMediaType()))
+            .addConverterFactory(json.asConverterFactory("application/json; charset=UTF8".toMediaType()))
             .client(client)
             .build()
     }

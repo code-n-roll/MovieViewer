@@ -12,6 +12,7 @@ import com.karanchuk.core.entity.movies.DbMovie
 import com.karanchuk.core.entity.movies.DbMovieFeedCrossRef
 import com.karanchuk.core.entity.movies.DbMovieRemoteKey
 import com.karanchuk.common.model.domain.FeedType
+import timber.log.Timber
 
 @OptIn(ExperimentalPagingApi::class)
 class MoviesRemoteMediator(
@@ -87,6 +88,7 @@ class MoviesRemoteMediator(
 
             MediatorResult.Success(endOfPaginationReached = endOfPaginationReached)
         } catch (t: Throwable) {
+            Timber.e(t)
             MediatorResult.Error(t)
         }
     }
