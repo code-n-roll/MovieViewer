@@ -33,7 +33,7 @@ dependencies {
     implementation(libs.composeShimmer)
 
     // for compose @Preview
-    debugImplementation(libs.androidx.ui.tooling)
+    implementation(libs.androidx.ui.tooling)
 
     // Coil
     implementation(libs.coil.compose)
