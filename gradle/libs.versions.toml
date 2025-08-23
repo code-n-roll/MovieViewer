@@ -4,6 +4,9 @@ minSdk = "24"
 targetSdk = "36"
 compileSdk = "36"
 
+appVersionCode = "1"
+appVersionName = "1.0.0"
+
 agp = "8.10.1"
 kotlin = "2.1.10"
 coreKtx = "1.16.0"
@@ -32,9 +35,11 @@ retrofitConverterKotlinx = "2.12.0"
 
 compose = "1.8.2"
 java = "11"
+javaConvention = "11"
 
 [libraries]
 # Plugins for composite build
+gradleplugin-base = { module = "com.karanchuk.conventionplugins:base" }
 gradleplugin-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 gradleplugin-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose" }
 gradleplugin-composeCompiler = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "compose" }

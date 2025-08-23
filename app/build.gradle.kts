@@ -1,12 +1,11 @@
 plugins {
-    alias(libs.plugins.android.application)
+    id("android.application.plugin")
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
     id("android.compose.config")
-    id("android.base.test.config")
     id("android.build-types.config")
 }
 
@@ -15,9 +14,6 @@ android {
 
     defaultConfig {
         applicationId = "com.karanchuk.movieviewer"
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
     }
 
     compileOptions {

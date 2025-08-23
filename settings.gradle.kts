@@ -1,5 +1,6 @@
 pluginManagement {
     includeBuild("convention-plugins/base")
+    includeBuild("convention-plugins/project")
     repositories {
         google {
             content {
@@ -21,6 +22,7 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = "MovieViewer"
+
 include(":app")
 include(":common:model")
 include(":common:ui")
