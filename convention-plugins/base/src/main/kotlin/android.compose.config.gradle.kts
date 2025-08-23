@@ -4,7 +4,6 @@ plugins {
     id("android.base.config")
 }
 
-
 androidConfig {
     buildFeatures {
         compose = true
