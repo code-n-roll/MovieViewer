@@ -19,9 +19,9 @@ DONE:
 - Work with paging
 - ELM implementation in Compose
 - Multimodule architecture
-  
+- Add build convention plugins to manage dependencies versions in multimodule architecture (based on this series of articles https://habr.com/en/companies/tbank/articles/846340/)
+
 TODO:
-- add build convention plugin to manage dependencies versions in multimodule architecture
 - unit testing
 - UI testing
   
