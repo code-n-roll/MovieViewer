@@ -1,12 +1,10 @@
 import java.util.Properties
 
 plugins {
-    alias(libs.plugins.android.library)
+    id("android.library.plugin")
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.kotlin.serialization)
-    id("android.base.config")
-    id("android.base.test.config")
 }
 
 android {

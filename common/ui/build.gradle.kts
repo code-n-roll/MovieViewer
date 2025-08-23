@@ -1,9 +1,7 @@
 plugins {
-    alias(libs.plugins.android.library)
+    id("android.library.plugin")
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
-    id("android.base.config")
-    id("android.base.test.config")
 }
 
 android {
