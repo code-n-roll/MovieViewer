@@ -5,8 +5,6 @@ plugins {
     alias(libs.plugins.compose.compiler)
     id("android.base.config")
     id("android.base.test.config")
-    id("android.compose.config")
-    id("android.build-types.config")
 }
 
 android {
