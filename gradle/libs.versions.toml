@@ -25,7 +25,16 @@ material = "1.12.0"
 kotlinxSerializationJson = "1.9.0"
 retrofitConverterKotlinx = "2.12.0"
 
+compose = "1.8.2"
+java = "11"
+
 [libraries]
+# Plugins for composite build
+gradleplugin-android = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+gradleplugin-compose = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose" }
+gradleplugin-composeCompiler = { module = "org.jetbrains.kotlin:compose-compiler-gradle-plugin", version.ref = "compose" }
+gradleplugin-kotlin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
+
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
