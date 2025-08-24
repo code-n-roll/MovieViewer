@@ -1,4 +1,4 @@
-package com.karanchuk.movieviewer.data.source.network
+package com.karanchuk.core.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
