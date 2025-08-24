@@ -20,9 +20,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.karanchuk.movieviewer.MovieViewerDestinationsArgs.MOVIE_ID_ARG
+import com.karanchuk.common.navigation.MovieViewerDestinationsArgs.MOVIE_ID_ARG
 import com.karanchuk.feature.favorite_movies.FavoriteMoviesRoute
-import com.karanchuk.movieviewer.feature.movie_details.MovieDetailsRoute
+import com.karanchuk.feature.movie_details.MovieDetailsRoute
 import com.karanchuk.feature.movies.MoviesRoute
 import com.karanchuk.movieviewer.feature.settings.SettingsRoute
 

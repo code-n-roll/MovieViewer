@@ -32,10 +32,12 @@ android {
 dependencies {
 
     implementation(project(":common:model"))
+    implementation(project(":common:navigation"))
     implementation(project(":common:ui"))
     implementation(project(":common:util"))
     implementation(project(":core:db"))
     implementation(project(":feature:movies"))
+    implementation(project(":feature:movie_details"))
     implementation(project(":feature:favorite_movies"))
     implementation(project(":repository:movies"))
     implementation(project(":repository:favorite_movies"))

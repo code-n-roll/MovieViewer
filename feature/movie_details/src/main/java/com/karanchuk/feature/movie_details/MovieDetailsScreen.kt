@@ -1,4 +1,4 @@
-package com.karanchuk.movieviewer.feature.movie_details
+package com.karanchuk.feature.movie_details
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues

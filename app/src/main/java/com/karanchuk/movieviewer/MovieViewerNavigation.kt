@@ -8,7 +8,7 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavController
 import com.karanchuk.common.ui.R
-import com.karanchuk.movieviewer.MovieViewerDestinationsArgs.MOVIE_ID_ARG
+import com.karanchuk.common.navigation.MovieViewerDestinationsArgs.MOVIE_ID_ARG
 import com.karanchuk.movieviewer.MovieViewerScreens.MOVIE_DETAILS_SCREEN
 
 enum class BottomBarDestination(
@@ -27,10 +27,6 @@ private object MovieViewerScreens {
     const val MOVIE_DETAILS_SCREEN = "movieDetails"
     const val FAVORITES_SCREEN = "favorites"
     const val SETTINGS_SCREEN = "settings"
-}
-
-object MovieViewerDestinationsArgs {
-    const val MOVIE_ID_ARG = "movieId"
 }
 
 object MovieViewerDestinations {

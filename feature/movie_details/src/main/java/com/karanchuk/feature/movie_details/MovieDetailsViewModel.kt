@@ -1,9 +1,9 @@
-package com.karanchuk.movieviewer.feature.movie_details
+package com.karanchuk.feature.movie_details
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.karanchuk.movieviewer.MovieViewerDestinationsArgs.MOVIE_ID_ARG
+import com.karanchuk.common.navigation.MovieViewerDestinationsArgs.MOVIE_ID_ARG
 import com.karanchuk.repository.favorite_movies.FavoriteMoviesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
