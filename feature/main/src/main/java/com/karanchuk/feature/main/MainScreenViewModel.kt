@@ -1,4 +1,4 @@
-package com.karanchuk.movieviewer.feature.main
+package com.karanchuk.feature.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

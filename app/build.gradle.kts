@@ -37,6 +37,7 @@ dependencies {
     implementation(project(":common:util"))
     implementation(project(":core:db"))
     implementation(project(":core:network"))
+    implementation(project(":feature:main"))
     implementation(project(":feature:movies"))
     implementation(project(":feature:movie_details"))
     implementation(project(":feature:favorite_movies"))
