@@ -10,6 +10,8 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.hilt.navigation.compose)
+
     // Coil
     implementation(libs.coil.compose)
     implementation(libs.coil.core)

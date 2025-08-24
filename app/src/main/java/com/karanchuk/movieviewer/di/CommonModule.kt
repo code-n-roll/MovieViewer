@@ -2,8 +2,8 @@ package com.karanchuk.movieviewer.di
 
 import android.content.Context
 import coil.ImageLoader
-import com.karanchuk.movieviewer.common.ImagePrefetcher
-import com.karanchuk.movieviewer.common.ImagePrefetcherImpl
+import com.karanchuk.common.ui.ImagePrefetcher
+import com.karanchuk.common.ui.ImagePrefetcherImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

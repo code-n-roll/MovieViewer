@@ -1,4 +1,4 @@
-package com.karanchuk.movieviewer.common
+package com.karanchuk.common.ui
 
 import android.content.Context
 import coil.ImageLoader
