@@ -39,8 +39,10 @@ dependencies {
     implementation(project(":feature:movies"))
     implementation(project(":feature:movie_details"))
     implementation(project(":feature:favorite_movies"))
+    implementation(project(":feature:settings"))
     implementation(project(":repository:movies"))
     implementation(project(":repository:favorite_movies"))
+    implementation(project(":repository:settings"))
 
     coreLibraryDesugaring("com.android.tools:desugar_jdk_libs:2.1.5")
 

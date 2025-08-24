@@ -24,7 +24,7 @@ import com.karanchuk.common.navigation.MovieViewerDestinationsArgs.MOVIE_ID_ARG
 import com.karanchuk.feature.favorite_movies.FavoriteMoviesRoute
 import com.karanchuk.feature.movie_details.MovieDetailsRoute
 import com.karanchuk.feature.movies.MoviesRoute
-import com.karanchuk.movieviewer.feature.settings.SettingsRoute
+import com.karanchuk.feature.settings.SettingsRoute
 
 @Composable
 fun NavGraph(

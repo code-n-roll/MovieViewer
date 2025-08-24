@@ -2,8 +2,8 @@ package com.karanchuk.movieviewer.feature.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.karanchuk.movieviewer.common.AppTheme
-import com.karanchuk.movieviewer.repository.settings.domain.SettingsRepository
+import com.karanchuk.common.ui.AppTheme
+import com.karanchuk.repository.settings.domain.SettingsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

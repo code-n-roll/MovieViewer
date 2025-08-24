@@ -4,9 +4,11 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import com.karanchuk.common.model.di.IoDispatcher
 import com.karanchuk.core.dao.favorite_movie.FavoriteMovieDao
-import com.karanchuk.movieviewer.repository.settings.domain.SettingsRepository
+import com.karanchuk.core.db.MovieViewerDatabase
 import com.karanchuk.repository.favorite_movies.FavoriteMoviesRepository
+import com.karanchuk.repository.movies.api.MovieApi
 import com.karanchuk.repository.movies.domain.MoviesRepository
+import com.karanchuk.repository.settings.domain.SettingsRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -19,8 +21,8 @@ class RepositoryModule {
 
     @Provides
     fun providesMoviesRepository(
-        movieApi: com.karanchuk.repository.movies.api.MovieApi,
-        movieViewerDatabase: com.karanchuk.core.db.MovieViewerDatabase,
+        movieApi: MovieApi,
+        movieViewerDatabase: MovieViewerDatabase,
     ): MoviesRepository {
         return MoviesRepository.create(
             movieApi = movieApi,

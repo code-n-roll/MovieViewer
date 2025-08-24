@@ -16,7 +16,6 @@ import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 private const val USER_PREFERENCES_FILE_NAME = "user_preferences.preferences_pb"
-const val USER_PREFERENCES_KEY_THEME = "user_preferences.key_theme"
 
 @Module
 @InstallIn(SingletonComponent::class)
