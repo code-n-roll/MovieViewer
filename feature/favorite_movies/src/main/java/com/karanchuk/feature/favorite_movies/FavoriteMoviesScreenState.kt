@@ -1,4 +1,4 @@
-package com.karanchuk.movieviewer.feature.favorite_movies
+package com.karanchuk.feature.favorite_movies
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable

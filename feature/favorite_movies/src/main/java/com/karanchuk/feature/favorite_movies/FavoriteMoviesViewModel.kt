@@ -1,4 +1,4 @@
-package com.karanchuk.movieviewer.feature.favorite_movies
+package com.karanchuk.feature.favorite_movies
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

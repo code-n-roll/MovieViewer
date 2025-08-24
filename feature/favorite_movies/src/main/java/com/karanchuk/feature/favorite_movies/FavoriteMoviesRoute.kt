@@ -1,19 +1,18 @@
-package com.karanchuk.movieviewer.feature.favorite_movies
+package com.karanchuk.feature.favorite_movies
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.karanchuk.movieviewer.MovieViewerNavigationActions
 
 @Composable
 fun FavoriteMoviesRoute(
     vm: FavoriteMoviesViewModel,
-    navActions: MovieViewerNavigationActions,
+    onMovieDetailsClick: (Int) -> Unit,
 ) {
     val state by vm.uiState.collectAsStateWithLifecycle()
     FavoriteMoviesScreen(
         state = state,
-        onMovieDetailsClick = { movieId -> navActions.navigateToMovieDetails(movieId) },
+        onMovieDetailsClick = { movieId -> onMovieDetailsClick(movieId) },
         onSortSelected = { vm.onSortSelected(it) },
     )
 }
