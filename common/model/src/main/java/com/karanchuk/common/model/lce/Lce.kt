@@ -1,4 +1,4 @@
-package com.karanchuk.movieviewer.util
+package com.karanchuk.common.model.lce
 
 sealed interface Lce<out T> {
 

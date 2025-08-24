@@ -1,8 +1,8 @@
-package com.karanchuk.movieviewer.util
+package com.karanchuk.common.model.lce
 
-import com.karanchuk.movieviewer.util.Lce.Content
-import com.karanchuk.movieviewer.util.Lce.Error
-import com.karanchuk.movieviewer.util.Lce.Loading
+import com.karanchuk.common.model.lce.Lce.Content
+import com.karanchuk.common.model.lce.Lce.Error
+import com.karanchuk.common.model.lce.Lce.Loading
 
 val <T> Lce<T>.content: T?
 	get() {

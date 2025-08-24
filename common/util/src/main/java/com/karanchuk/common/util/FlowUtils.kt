@@ -1,4 +1,4 @@
-package com.karanchuk.movieviewer.util
+package com.karanchuk.common.util
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
